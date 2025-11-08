@@ -36,7 +36,7 @@ config KSU_THRONE_TRACKER_ALWAYS_THREADED
 config KSU_ALLOWLIST_WORKAROUND
         bool "KernelSU Session Keyring Init workaround"
         depends on KSU
-        default n
+        default y
         help
           Enable session keyring init workaround for problematic devices.
           Useful for situations where the SU allowlist is not kept after a reboot.
@@ -48,6 +48,13 @@ config KSU_LSM_SECURITY_HOOKS
 	help
 	  Disabling this is mostly only useful for kernel 4.1 and older.
 	  Make sure to implement manual hooks on security/security.c.
+
+config KSU_SWITCH_MANAGER
+	bool "KernelSU switch manager support"
+	depends on KSU
+	default y
+	help
+	  Enable KernelSU switch manager support.
 
 menu "KernelSU - SUSFS"
 config KSU_SUSFS
