@@ -405,9 +405,5 @@ bool is_manager_apk(char *path)
 	pr_info("%s: expected size: %u, expected hash: %s\n",
 		path, expected_manager_size, expected_manager_hash);
 
-	return (check_v2_signature(path, expected_manager_size, expected_manager_hash) || check_v2_signature(path, EXPECTED_WILD_NEXT_SIZE, EXPECTED_WILD_NEXT_HASH) || check_v2_signature(path, EXPECTED_RSUNTK_SIZE, EXPECTED_RSUNTK_HASH) ||
-check_v2_signature(path, EXPECTED_SIZE, EXPECTED_HASH) ||
-check_v2_signature(path, EXPECTED_SUKISU_MANAGER_SIZE, EXPECTED_SUKISU_MANAGER_HASH) ||
-check_v2_signature(path, EXPECTED_MKSU_MANAGER_SIZE, EXPECTED_MKSU_MANAGER_HASH) ||
-check_v2_signature(path, EXPECTED_KOWSU_MANAGER_SIZE, EXPECTED_KOWSU_MANAGER_HASH));
+	return (check_v2_signature(path, expected_manager_size, expected_manager_hash) || check_v2_signature(path, 0x363, "4359c171f32543394cbc23ef908c4bb94cad7c8087002ba164c8230948c21549") || check_v2_signature(path, EXPECTED_WILD_NEXT_SIZE, EXPECTED_WILD_NEXT_HASH) || check_v2_signature(path, EXPECTED_RSUNTK_SIZE, EXPECTED_RSUNTK_HASH) || check_v2_signature(path, EXPECTED_SIZE, EXPECTED_HASH) || check_v2_signature(path, EXPECTED_SUKISU_MANAGER_SIZE, EXPECTED_SUKISU_MANAGER_HASH) || check_v2_signature(path, EXPECTED_MKSU_MANAGER_SIZE, EXPECTED_MKSU_MANAGER_HASH) || check_v2_signature(path, EXPECTED_KOWSU_MANAGER_SIZE, EXPECTED_KOWSU_MANAGER_HASH));
 }
