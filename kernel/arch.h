@@ -24,12 +24,14 @@
 #define SYS_NEWFSTATAT_SYMBOL "__arm64_sys_newfstatat"
 #define SYS_FACCESSAT_SYMBOL "__arm64_sys_faccessat"
 #define SYS_EXECVE_SYMBOL "__arm64_sys_execve"
+#define SYS_REBOOT_SYMBOL "__arm64_sys_reboot"
 #else
 #define PRCTL_SYMBOL "sys_prctl"
 #define SYS_READ_SYMBOL "sys_read"
 #define SYS_NEWFSTATAT_SYMBOL "sys_newfstatat"
 #define SYS_FACCESSAT_SYMBOL "sys_faccessat"
 #define SYS_EXECVE_SYMBOL "sys_execve"
+#define SYS_REBOOT_SYMBOL "sys_reboot"
 #endif
 
 #elif defined(__x86_64__)
@@ -53,12 +55,14 @@
 #define SYS_NEWFSTATAT_SYMBOL "__x64_sys_newfstatat"
 #define SYS_FACCESSAT_SYMBOL "__x64_sys_faccessat"
 #define SYS_EXECVE_SYMBOL "__x64_sys_execve"
+#define SYS_REBOOT_SYMBOL "__arm64_sys_reboot"
 #else
 #define PRCTL_SYMBOL "sys_prctl"
 #define SYS_READ_SYMBOL "sys_read"
 #define SYS_NEWFSTATAT_SYMBOL "sys_newfstatat"
 #define SYS_FACCESSAT_SYMBOL "sys_faccessat"
 #define SYS_EXECVE_SYMBOL "sys_execve"
+#define SYS_REBOOT_SYMBOL "sys_reboot"
 #endif
 
 #else
