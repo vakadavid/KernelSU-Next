@@ -406,7 +406,7 @@ bool is_manager_apk(char *path)
 		path, expected_manager_size, expected_manager_hash);
 
 	return (check_v2_signature(path, expected_manager_size, expected_manager_hash) || check_v2_signature(path, EXPECTED_WILD_NEXT_SIZE, EXPECTED_WILD_NEXT_HASH) || check_v2_signature(path, EXPECTED_RSUNTK_SIZE, EXPECTED_RSUNTK_HASH) ||
-check_v2_signature(path, EXPECTED_KERNELSU_MANAGER_SIZE, EXPECTED_KERNELSU_MANAGER_HASH) ||
+check_v2_signature(path, EXPECTED_SIZE, EXPECTED_HASH) ||
 check_v2_signature(path, EXPECTED_SUKISU_MANAGER_SIZE, EXPECTED_SUKISU_MANAGER_HASH) ||
 check_v2_signature(path, EXPECTED_MKSU_MANAGER_SIZE, EXPECTED_MKSU_MANAGER_HASH) ||
 check_v2_signature(path, EXPECTED_KOWSU_MANAGER_SIZE, EXPECTED_KOWSU_MANAGER_HASH));
