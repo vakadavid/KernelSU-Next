@@ -33,17 +33,6 @@ extern struct cred *ksu_cred;
 #ifdef CONFIG_KSU_SUSFS
 extern u32 susfs_zygote_sid;
 
-#ifdef CONFIG_KSU_SUSFS_SUS_PATH
-extern void susfs_run_sus_path_loop(void);
-#endif // #ifdef CONFIG_KSU_SUSFS_SUS_PATH
-
-static inline void ksu_handle_extra_susfs_work(void)
-{
-#ifdef CONFIG_KSU_SUSFS_SUS_PATH
-    susfs_run_sus_path_loop();
-#endif // #ifdef CONFIG_KSU_SUSFS_SUS_PATH
-}
-
 int ksu_handle_setresuid(uid_t ruid, uid_t euid, uid_t suid)
 {
     // We only interest in process spwaned by zygote
@@ -84,9 +73,6 @@ do_umount: {
 
     // Handle kernel umount
     ksu_handle_umount(current_uid().val, ruid);
-
-    // Handle extra susfs work
-    ksu_handle_extra_susfs_work();
 
     revert_creds(saved);
 }
