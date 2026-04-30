@@ -87,6 +87,7 @@ int ksu_handle_umount(uid_t old_uid, uid_t new_uid)
 		return 0;
 	}
 
+#ifndef CONFIG_KSU_SUSFS
     // There are 6 scenarios:
     // 1. Normal app: zygote -> appuid
     // 2. Isolated process forked from zygote: zygote -> isolated_process
@@ -111,10 +112,9 @@ int ksu_handle_umount(uid_t old_uid, uid_t new_uid)
 		pr_info("handle umount ignore non zygote child: %d\n", current->pid);
 		return 0;
 	}
+#endif
 	// umount the target mnt
 	pr_info("handle umount for uid: %d, pid: %d\n", new_uid, current->pid);
-
-	const struct cred *saved = override_creds(ksu_cred);
 
 	struct mount_entry *entry;
 	down_read(&mount_list_lock);
@@ -123,8 +123,6 @@ int ksu_handle_umount(uid_t old_uid, uid_t new_uid)
 		try_umount(entry->umountable, entry->flags);
 	}
 	up_read(&mount_list_lock);
-
-	revert_creds(saved);
 
 	return 0;
 }
